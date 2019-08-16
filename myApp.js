@@ -33,12 +33,13 @@ var app = express();              // Do Not Edit
 // Use `helmet.hidePoweredBy()``
 //import the installed helmet package
 var helmet = require('helmet');
-//app.use(helmet.hidePoweredBy());
 // get the express app to use it and  impliment the hidePoweredBy() method
 // optionall use the optional object parameter {setTo:}
 //app.use(helmet.hidePoweredBy({ setTo: 'ASP 4.7.1' }))
-//app.use(helmet());
-app.use(helmet.hidePoweredBy({ setTo: 'ASP 4.7.1' }))
+app.use(helmet.hidePoweredBy());
+// above line worked but didt pass the test so i had to go to the entry file server.js and add : app.disable('x-powered-by')
+
+//https://www.freecodecamp.org/forum/t/done-hide-potentially-dangerous-information-using-helmet-hidepoweredby/206042/5
 
 
 
@@ -55,6 +56,11 @@ app.use(helmet.hidePoweredBy({ setTo: 'ASP 4.7.1' }))
 
 // We don't need our app to be framed, so you should use `helmet.frameguard()`
 // passing to it the configuration object `{action: 'deny'}`
+//helmet.fragmentguard({action: 'deny'});
+
+app.use(helmet.frameguard({action: 'deny'}));
+
+
 
  
 
