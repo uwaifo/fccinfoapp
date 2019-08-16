@@ -84,6 +84,7 @@ app.use(helmet.frameguard({action: 'deny'}));
 // It still has limited support.
 
 // Use `helmet.xssFilter()`
+app.use(helmet.xssFilter({}));
 
 
 
